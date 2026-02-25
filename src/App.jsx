@@ -22,8 +22,7 @@ function App() {
           ?.replace('Stack:', '')
           .split(',')
           .map((item) => item.trim())
-          .filter(Boolean)
-          .slice(0, 3) || [],
+          .filter(Boolean) || [],
       year: project.year ?? 2026 - index,
       liveUrl: project.liveUrl,
     }))
@@ -116,14 +115,16 @@ function App() {
                   </span>
                   <h2 className="font-display text-2xl font-semibold text-white">About</h2>
                 </div>
+                <p className="max-w-4xl text-base leading-8 text-muted mb-5">
+                  My core role is Backend Developer, and I have grown into a Software Engineer I position.
+                  I build reliable systems, implement business logic, and support workflow automation,
+                  while also contributing to frontend development when end-to-end delivery is required.
+                </p>
+
                 <p className="max-w-4xl text-base leading-8 text-muted">
-                  My core role is Backend Developer, and I have grown into a Software Engineer I
-                  role. I specialize in business-rule logic, timesheet computation,
-                  overtime handling, and workflow automation, and I also deliver frontend work when
-                  projects require end-to-end implementation. I focus on turning complex,
-                  compliance-heavy processes into reliable software with clear API contracts and
-                  production-safe behavior. I also do vibe coding for rapid prototyping and idea
-                  exploration.
+                  I focus on translating complex processes into stable, maintainable software with clear
+                  structure and production-ready standards. I also handle deployments and practice rapid
+                  prototyping (“vibe coding”) to efficiently explore and validate ideas.
                 </p>
               </article>
 
@@ -188,44 +189,44 @@ function App() {
               <article className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
                 <div className="mb-5 flex items-center gap-3">
                   <span className="rounded-lg bg-emerald-500/15 px-2 py-1 text-emerald-300">&lt;/&gt;</span>
-                  <h2 className="font-display text-2xl font-semibold text-white">Core Stack</h2>
+                  <h2 className="font-display text-2xl font-semibold text-zinc-300">Core Stack</h2>
                 </div>
                 <div className="space-y-5">
                   <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Backend</p>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Backend</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.backend.map((item) => (
-                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Frontend</p>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Frontend</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.frontend.map((item) => (
-                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Data & Infra</p>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Data & Infra</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.dataInfra.map((item) => (
-                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Integrations</p>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Integrations</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.integrations.map((item) => (
-                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
@@ -237,21 +238,21 @@ function App() {
               <article id="contact" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
                 <div className="mb-5 flex items-center gap-3">
                   <span className="rounded-lg bg-cyan-500/15 px-2 py-1 text-cyan-300">@</span>
-                  <h2 className="font-display text-2xl font-semibold text-white">Contact</h2>
+                  <h2 className="font-display text-2xl font-semibold text-zinc-300">Contact</h2>
                 </div>
-                <ul className="space-y-4 text-sm text-muted">
+                <ul className="space-y-4 text-sm text-zinc-400">
                   <li>
-                    <a className="flex items-center gap-3 hover:text-white" href="mailto:chavezlovelym@gmail.com">
+                    <a className="flex items-center gap-3 hover:text-zinc-100" href="mailto:chavezlovelym@gmail.com">
                       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                         <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
                         <path d="M4 7l8 6 8-6" />
                       </svg>
-                      <span>chavezlovelym@gmail.com</span>
+                      <span className="font-mono">chavezlovelym@gmail.com</span>
                     </a>
                   </li>
                   <li>
                     <a
-                      className="flex items-center gap-3 hover:text-white"
+                      className="flex items-center gap-3 hover:text-zinc-100"
                       href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                       target="_blank"
                       rel="noreferrer"
@@ -265,7 +266,7 @@ function App() {
                   </li>
                   <li>
                     <a
-                      className="flex items-center gap-3 hover:text-white"
+                      className="flex items-center gap-3 hover:text-zinc-100"
                       href="https://github.com/MsLovely-dev"
                       target="_blank"
                       rel="noreferrer"
@@ -278,7 +279,7 @@ function App() {
                   </li>
                   <li>
                     <a
-                      className="flex items-center gap-3 hover:text-white"
+                      className="flex items-center gap-3 hover:text-zinc-100"
                       href="https://x.com/chavezlovelym"
                       target="_blank"
                       rel="noreferrer"
@@ -295,7 +296,7 @@ function App() {
                     href="https://github.com/MsLovely-dev"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="GitHub"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -306,7 +307,7 @@ function App() {
                     href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="LinkedIn"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -317,7 +318,7 @@ function App() {
                     href="https://x.com/chavezlovelym"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="X (Twitter)"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">

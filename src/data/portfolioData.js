@@ -30,12 +30,12 @@ export const projects = [
     ],
   },
   {
-    title: 'RDMS - Research Document Management System (Private, External Client)',
+    title: 'RDMS - Research Document Management System (Private)',
     image: '/images/projects/booking-placeholder.svg',
     year: 2024,
     points: [
       'Django-based document and workflow management system for NDCP, supporting document lifecycle tracking, role-based access control, OTP-secured authentication, activity/session logging, and SharePoint-integrated storage with realtime notifications.',
-      'Stack: Django 5, Django Channels, Daphne (ASGI), Django ORM, SQLite/PostgreSQL, HTML, CSS, JavaScript, Microsoft Graph API, SharePoint.',
+      'Stack: Django 5, Django Channels, Daphne (ASGI), Django ORM, SQLite/PostgreSQL, HTML, CSS, JavaScript, Microsoft Graph API, SharePoint',
     ],
   },
   {
@@ -45,7 +45,7 @@ export const projects = [
     year: 2026,
     points: [
       'Responsive public-facing wellness spa website focused on clean UX and mobile-first design.',
-      'Stack: React, Vite, Tailwind CSS.',
+      'Stack: React, Vite, Tailwind CSS',
     ],
   },
 ]
