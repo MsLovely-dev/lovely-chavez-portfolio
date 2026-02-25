@@ -282,44 +282,13 @@ function App() {
                     </a>
                   </li>
                   <li>
-                    <a
-                      className="flex items-center gap-3 hover:text-zinc-100"
-                      href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <div className="flex items-center gap-3">
                       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                        <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
-                        <path d="M8.5 10.5v6M8.5 8.5v.01M12 16.5v-3.4c0-1.4.9-2.6 2.4-2.6 1.2 0 2.1.9 2.1 2.4v3.6" />
+                        <path d="M17.657 16.657 13.414 20.9a2 2 0 0 1-2.828 0L6.343 16.657a8 8 0 1 1 11.314 0Z" />
+                        <circle cx="12" cy="11" r="2.5" />
                       </svg>
-                      <span>linkedin.com/in/lovely-mae-chavez-046a342b0</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="flex items-center gap-3 hover:text-zinc-100"
-                      href="https://github.com/MsLovely-dev"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-                        <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-1.9c-3.1.67-3.75-1.32-3.75-1.32-.5-1.3-1.25-1.64-1.25-1.64-1.03-.7.08-.7.08-.7 1.13.08 1.73 1.18 1.73 1.18 1.01 1.74 2.64 1.24 3.28.95.1-.74.4-1.24.72-1.52-2.47-.29-5.07-1.24-5.07-5.5 0-1.22.43-2.22 1.15-3-.12-.28-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.16a10.6 10.6 0 0 1 5.6 0c2.15-1.46 3.08-1.16 3.08-1.16.61 1.55.23 2.7.11 2.98.72.78 1.15 1.78 1.15 3 0 4.27-2.6 5.21-5.08 5.5.41.36.77 1.05.77 2.13v3.16c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" />
-                      </svg>
-                      <span>github.com/MsLovely-dev</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="flex items-center gap-3 hover:text-zinc-100"
-                      href="https://x.com/chavezlovelym"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                      <span>x.com/chavezlovelym</span>
-                    </a>
+                      <span>Binangona Rizal</span>
+                    </div>
                   </li>
                 </ul>
                 <div className="mt-6 flex items-center gap-3 border-t border-border/70 pt-5">
