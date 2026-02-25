@@ -74,4 +74,86 @@
   ::selection {
     background: rgba(99, 102, 241, 0.35);
   }
+
+  html.theme-light body {
+    background-image:
+      radial-gradient(circle at 84% 10%, rgba(99, 102, 241, 0.1), transparent 34%),
+      radial-gradient(circle at 12% 92%, rgba(168, 85, 247, 0.06), transparent 34%),
+      linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    background-color: #f3f5fb;
+    color: #0f172a;
+  }
+
+  html.theme-light [class*='bg-surface'] {
+    background-color: #eef2f9 !important;
+  }
+
+  html.theme-light [class*='bg-card'] {
+    background-color: #ffffff !important;
+  }
+
+  html.theme-light [class*='border-border'] {
+    border-color: #d4dbe8 !important;
+  }
+
+  html.theme-light .text-muted {
+    color: #64748b !important;
+  }
+
+  html.theme-light .text-text,
+  html.theme-light .text-white,
+  html.theme-light .text-zinc-100,
+  html.theme-light .text-zinc-200,
+  html.theme-light .text-zinc-300,
+  html.theme-light .text-zinc-400 {
+    color: #0f172a !important;
+  }
+
+  html.theme-light .card-hover:hover {
+    border-color: rgba(99, 102, 241, 0.28) !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  }
+
+  html.theme-light .stack-chip {
+    background-color: #e2e8f0 !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+  }
+
+  html.theme-light .project-tag {
+    background-color: #eef2ff !important;
+    border-color: #c7d2fe !important;
+    color: #4338ca !important;
+  }
+
+  html.theme-light .social-btn {
+    background-color: #e2e8f0 !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+  }
+
+  html.theme-light .social-btn:hover {
+    color: #0f172a !important;
+  }
+
+  html.theme-light .theme-toggle {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+  }
+
+  html.theme-light .theme-toggle:hover {
+    color: #0f172a !important;
+  }
+
+  html.theme-light .featured-item {
+    background-color: #f8fafc !important;
+    border-color: #dbe4f0 !important;
+  }
+
+  html.theme-light .featured-item:hover {
+    border-color: #a5b4fc !important;
+    background-image: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05));
+  }
 }

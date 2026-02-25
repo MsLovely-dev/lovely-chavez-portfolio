@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { projects } from './data/portfolioData'
 
 const sectionClassName = 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10'
@@ -10,6 +11,20 @@ const coreStack = {
 }
 
 function App() {
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('portfolio-theme')
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      setTheme(savedTheme)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-light', theme === 'light')
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
   const featuredProjects = projects
     .map((project, index) => ({
       title: project.title,
@@ -39,6 +54,14 @@ function App() {
             <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
             Available for hire
           </div>
+          <button
+            type="button"
+            onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+            className="theme-toggle rounded-lg border border-border bg-card/80 px-3 py-2 text-xs font-semibold text-muted transition-colors hover:text-white"
+            aria-label="Toggle light mode"
+          >
+            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          </button>
           <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
             <a href="#profile" className="hover:text-white">Profile</a>
             <a href="#work" className="hover:text-white">Work</a>
@@ -81,7 +104,7 @@ function App() {
               </div>
             </div>
 
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
                 <p className="text-4xl font-bold text-white">2+</p>
                 <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Years Experience</p>
@@ -93,10 +116,6 @@ function App() {
               <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
                 <p className="text-4xl font-bold text-white">10+</p>
                 <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Workflow Engines</p>
-              </div>
-              <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
-                <p className="text-4xl font-bold text-white">99.9%</p>
-                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Reliability Focus</p>
               </div>
             </div>
           </div>
@@ -163,7 +182,7 @@ function App() {
                         {project.stackTags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs font-mono text-indigo-200"
+                            className="project-tag rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs font-mono text-indigo-200"
                           >
                             {tag}
                           </span>
@@ -196,7 +215,7 @@ function App() {
                     <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Backend</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.backend.map((item) => (
-                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
+                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
@@ -206,7 +225,7 @@ function App() {
                     <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Frontend</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.frontend.map((item) => (
-                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
+                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
@@ -216,7 +235,7 @@ function App() {
                     <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Data & Infra</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.dataInfra.map((item) => (
-                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
+                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
@@ -226,7 +245,7 @@ function App() {
                     <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Integrations</p>
                     <div className="flex flex-wrap gap-2">
                       {coreStack.integrations.map((item) => (
-                        <span key={item} className="rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
+                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
                           {item}
                         </span>
                       ))}
@@ -296,7 +315,7 @@ function App() {
                     href="https://github.com/MsLovely-dev"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
+                    className="social-btn rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="GitHub"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -307,7 +326,7 @@ function App() {
                     href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
+                    className="social-btn rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="LinkedIn"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -318,7 +337,7 @@ function App() {
                     href="https://x.com/chavezlovelym"
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
+                    className="social-btn rounded-lg border border-zinc-700 bg-zinc-800/85 p-2.5 text-zinc-400 transition-colors hover:text-zinc-100"
                     aria-label="X (Twitter)"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
