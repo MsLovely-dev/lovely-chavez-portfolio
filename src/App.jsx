@@ -6,7 +6,7 @@ const sectionClassName = 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10'
 const coreStack = {
   backend: ['Django', 'Django REST Framework', 'Django Channels', 'Daphne (ASGI)'],
   frontend: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Django Templates', 'JavaScript', 'CSS'],
-  dataInfra: ['SQLite', 'PostgreSQL', 'WebSocket (ws/notifications/)',],
+  dataInfra: ['SQLite', 'PostgreSQL', 'WebSocket (ws/notifications/)', 'Azure VM', 'Azure App Service'],
   integrations: ['Microsoft Graph API', 'Azure AD', 'SharePoint'],
 }
 
