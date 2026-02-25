@@ -1,0 +1,14 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#0B1220"/>
+  <rect x="80" y="70" width="1040" height="560" rx="24" fill="#111A2D" stroke="#1F2A44" stroke-width="4"/>
+  <rect x="130" y="130" width="290" height="38" rx="10" fill="#2DD4BF" fill-opacity="0.2"/>
+  <rect x="130" y="210" width="940" height="78" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="306" width="940" height="78" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="402" width="940" height="78" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="500" width="940" height="80" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <text x="130" y="115" fill="#E5E7EB" font-size="30" font-family="Arial, sans-serif" font-weight="700">Payroll Engine</text>
+  <text x="155" y="258" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Holiday / Rest Day / NSD Rule Stack</text>
+  <text x="155" y="354" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Pay Multiplier Processor</text>
+  <text x="155" y="449" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Edge Case Validation Guardrails</text>
+  <text x="155" y="548" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Audit-safe Computation Output</text>
+</svg>
