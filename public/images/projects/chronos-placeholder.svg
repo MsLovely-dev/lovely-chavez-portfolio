@@ -1,0 +1,14 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#0B1220"/>
+  <rect x="80" y="70" width="1040" height="560" rx="24" fill="#111A2D" stroke="#1F2A44" stroke-width="4"/>
+  <rect x="130" y="130" width="300" height="38" rx="10" fill="#2DD4BF" fill-opacity="0.2"/>
+  <rect x="130" y="200" width="940" height="74" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="292" width="940" height="74" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="384" width="940" height="74" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="130" y="476" width="470" height="104" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <rect x="616" y="476" width="454" height="104" rx="12" fill="#0B1220" stroke="#1F2A44"/>
+  <text x="130" y="115" fill="#E5E7EB" font-size="30" font-family="Arial, sans-serif" font-weight="700">CHRONOS Dashboard</text>
+  <text x="148" y="248" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Approved Timesheet Hours</text>
+  <text x="148" y="340" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Overtime Computation (Rule Engine)</text>
+  <text x="148" y="432" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">DOLE-compliant Pay Breakdown</text>
+</svg>
