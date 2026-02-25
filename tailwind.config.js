@@ -4,19 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['Sora', 'Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
-        surface: '#05070f',
-        card: '#0d111d',
-        border: '#1b2236',
-        accent: '#8b5cf6',
-        text: '#eef1f7',
-        muted: '#8b93a7',
+        surface: '#0a0a0b',
+        card: '#141416',
+        border: '#27272a',
+        accent: '#6366f1',
+        text: '#fafafa',
+        muted: '#a1a1aa',
       },
       boxShadow: {
-        panel: '0 12px 40px rgba(2, 6, 23, 0.45)',
+        panel: '0 12px 36px rgba(5, 5, 8, 0.5)',
       },
     },
   },

@@ -25,11 +25,8 @@ export const projects = [
     image: '/images/projects/chronos-placeholder.svg',
     year: 2025,
     points: [
-      'Web-based internal platform for project execution tracking, task operations, and timesheet-request approval workflows',
-      'Identity and access: custom role-based user model, department mapping, Microsoft login flow, user/salary management, and holiday calendar logic',
-      'Project and task operations: project lifecycle, team assignments, budget tracking, task workflows, logs, attachments, and automatic project status/budget updates',
-      'Timesheet and compliance: overtime/extension/correction/holiday/rest-day requests, approval transfer logic, shift guardrails, and auditable pay-computation classification',
-      'Technical scope: Django + DRF + Channels backend, React + TypeScript + Vite + Tailwind frontend, realtime notifications via ws/notifications/',
+      'Internal project and workforce management system with task tracking, timesheet workflows, approval processes, and compliance-based payroll computation with realtime notifications.',
+      'Stack: Django, Django REST Framework, Channels, React, TypeScript, Vite, Tailwind CSS, WebSocket notifications.',
     ],
   },
   {
@@ -37,12 +34,8 @@ export const projects = [
     image: '/images/projects/booking-placeholder.svg',
     year: 2024,
     points: [
-      'Django-based document and workflow management platform for NDCP operational units, covering end-to-end document lifecycle tracking',
-      'Tech stack: Django 5, Django Channels, Daphne (ASGI), Django ORM, SQLite default setup (PostgreSQL-ready), and template-based frontend assets',
-      'Implemented authentication and access controls with OTP login flow, trusted-device tracking, password-expiry enforcement, and role-based authorization',
-      'Integrated Microsoft Graph API for Azure AD and SharePoint-backed document storage, including upload, lookup, and delete workflows',
-      'Delivered realtime notifications via Channels over ws/notifications/ with persisted notifications and group-based delivery',
-      'Built operational modules for logs/exports, template and content management, and multiple domain-specific document workflow areas',
+      'Django-based document and workflow management system for NDCP, supporting document lifecycle tracking, role-based access control, OTP-secured authentication, activity/session logging, and SharePoint-integrated storage with realtime notifications.',
+      'Stack: Django 5, Django Channels, Daphne (ASGI), Django ORM, SQLite/PostgreSQL, HTML, CSS, JavaScript, Microsoft Graph API, SharePoint.',
     ],
   },
   {
@@ -51,10 +44,8 @@ export const projects = [
     liveUrl: 'https://doceamorwellnessspa.netlify.app/',
     year: 2026,
     points: [
-      'Developed a responsive public-facing website using React and Tailwind CSS',
-      'Implemented reusable components and clean semantic page structure',
-      'Optimized layout, accessibility, and mobile performance',
-      'Shipped production-ready UI with modern, professional design patterns',
+      'Responsive public-facing wellness spa website focused on clean UX and mobile-first design.',
+      'Stack: React, Vite, Tailwind CSS.',
     ],
   },
 ]

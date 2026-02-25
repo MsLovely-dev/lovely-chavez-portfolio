@@ -13,8 +13,17 @@ function App() {
   const featuredProjects = projects
     .map((project, index) => ({
       title: project.title,
-      summary: project.points[0],
-      highlights: project.points.slice(1, 5),
+      summary:
+        project.points.find((point) => point.startsWith('Overview:'))?.replace('Overview:', '').trim() ||
+        project.points[0],
+      stackTags:
+        project.points
+          .find((point) => point.startsWith('Stack:'))
+          ?.replace('Stack:', '')
+          .split(',')
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .slice(0, 3) || [],
       year: project.year ?? 2026 - index,
       liveUrl: project.liveUrl,
     }))
@@ -41,10 +50,9 @@ function App() {
 
       <main>
         <section id="home" className={`${sectionClassName} py-14`}>
-          <div className="rounded-3xl border border-border/80 bg-card/85 p-8 shadow-panel sm:p-10">
-            <div className="grid items-start gap-8 lg:grid-cols-[1.45fr_1fr]">
-              <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <div className="card-hover rounded-3xl border border-border/80 bg-card/85 p-8 shadow-panel sm:p-10">
+            <div>
+              <p className="font-mono text-sm text-muted">
                 Backend Developer to Software Engineer I
               </p>
               <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
@@ -72,160 +80,251 @@ function App() {
                   Download Resume
                 </a>
               </div>
-              </div>
+            </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-                <div className="rounded-2xl border border-border/80 bg-surface/70 p-4">
-                  <p className="text-3xl font-bold text-white">2+</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">Years Experience</p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/70 p-4">
-                  <p className="text-3xl font-bold text-white">4+</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">Systems Delivered</p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/70 p-4">
-                  <p className="text-3xl font-bold text-white">10+</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">Workflow Engines</p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/70 p-4">
-                  <p className="text-3xl font-bold text-white">99.9%</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">Reliability Focus</p>
-                </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
+                <p className="text-4xl font-bold text-white">2+</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Years Experience</p>
+              </div>
+              <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
+                <p className="text-4xl font-bold text-white">4+</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Systems Delivered</p>
+              </div>
+              <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
+                <p className="text-4xl font-bold text-white">10+</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Workflow Engines</p>
+              </div>
+              <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
+                <p className="text-4xl font-bold text-white">99.9%</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Reliability Focus</p>
               </div>
             </div>
           </div>
         </section>
 
         <section id="profile" className={`${sectionClassName} py-6`}>
-          <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
-            <article className="rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
-              <div className="mb-5 flex items-center gap-3">
-                <span className="rounded-lg bg-violet-500/15 px-2 py-1 text-violet-300">{`{}`}</span>
-                <h2 className="font-display text-3xl font-semibold text-white">About</h2>
-              </div>
-              <p className="max-w-4xl text-lg leading-9 text-muted">
-                My core role is Backend Developer, and I have grown into a Software Engineer I
-                role. I specialize in business-rule logic, timesheet computation,
-                overtime handling, and workflow automation, and I also deliver frontend work when
-                projects require end-to-end implementation. I focus on turning complex,
-                compliance-heavy processes into reliable software with clear API contracts and
-                production-safe behavior. I also do vibe coding for rapid prototyping and idea
-                exploration.
-              </p>
-            </article>
+          <div className="grid items-start gap-6 lg:grid-cols-[2fr_1fr]">
+            <div className="space-y-6">
+              <article className="featured-panel rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="rounded-lg bg-violet-500/15 p-2 text-violet-300" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      <circle cx="12" cy="8" r="3.2" />
+                      <path d="M5.5 19c.7-3 3.4-4.8 6.5-4.8s5.8 1.8 6.5 4.8" />
+                    </svg>
+                  </span>
+                  <h2 className="font-display text-2xl font-semibold text-white">About</h2>
+                </div>
+                <p className="max-w-4xl text-base leading-8 text-muted">
+                  My core role is Backend Developer, and I have grown into a Software Engineer I
+                  role. I specialize in business-rule logic, timesheet computation,
+                  overtime handling, and workflow automation, and I also deliver frontend work when
+                  projects require end-to-end implementation. I focus on turning complex,
+                  compliance-heavy processes into reliable software with clear API contracts and
+                  production-safe behavior. I also do vibe coding for rapid prototyping and idea
+                  exploration.
+                </p>
+              </article>
 
-            <article className="rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
-              <div className="mb-5 flex items-center gap-3">
-                <span className="rounded-lg bg-emerald-500/15 px-2 py-1 text-emerald-300">&lt;/&gt;</span>
-                <h2 className="font-display text-3xl font-semibold text-white">Core Stack</h2>
-              </div>
-              <div className="space-y-5">
-                <div>
-                  <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Backend</p>
-                  <div className="flex flex-wrap gap-2">
-                    {coreStack.backend.map((item) => (
-                      <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+              <article id="work" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="rounded-lg bg-fuchsia-500/15 p-2 text-fuchsia-300" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      <path d="M10 3h4l1 4 3 6a2 2 0 0 1-1.8 3H7.8A2 2 0 0 1 6 13l3-6 1-4z" />
+                      <path d="M9 11h6" />
+                    </svg>
+                  </span>
+                  <h2 className="font-display text-xl font-semibold text-white">Featured Work</h2>
                 </div>
-                <div>
-                  <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Frontend</p>
-                  <div className="flex flex-wrap gap-2">
-                    {coreStack.frontend.map((item) => (
-                      <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <div className="space-y-4">
+                  {featuredProjects.map((project, itemIndex) => (
+                    <article
+                      key={project.title}
+                      className={`featured-item group rounded-2xl border bg-surface/70 p-4 sm:p-5 ${
+                        itemIndex === 0 ? 'border-accent/60' : 'border-border/80'
+                      }`}
+                    >
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                        <h3
+                          className={`featured-title text-1xl font-semibold leading-tight transition-colors duration-300 ${
+                            itemIndex === 0 ? 'text-indigo-400' : 'text-white'
+                          }`}
+                        >
+                          {project.title}
+                        </h3>
+                        <span className="featured-year text-xs text-muted transition-colors duration-300 sm:shrink-0">
+                          {project.year}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-7 text-muted">{project.summary}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {project.stackTags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs font-mono text-indigo-200"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline"
+                        >
+                          Visit Website
+                        </a>
+                      ) : null}
+                    </article>
+                  ))}
                 </div>
-                <div>
-                  <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Data & Infra</p>
-                  <div className="flex flex-wrap gap-2">
-                    {coreStack.dataInfra.map((item) => (
-                      <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Integrations</p>
-                  <div className="flex flex-wrap gap-2">
-                    {coreStack.integrations.map((item) => (
-                      <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="work" className={`${sectionClassName} py-6`}>
-          <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
-            <article className="rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
-              <div className="mb-6 flex items-center gap-3">
-                <span className="rounded-lg bg-fuchsia-500/15 px-2 py-1 text-fuchsia-300">◈</span>
-                <h2 className="font-display text-3xl font-semibold text-white">Featured Work</h2>
-              </div>
-              <div className="space-y-4">
-                {featuredProjects.map((project) => (
-                  <article key={project.title} className="rounded-2xl border border-border/80 bg-surface/70 p-4 sm:p-5">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                      <h3 className="text-xl font-semibold leading-tight text-white">{project.title}</h3>
-                      <span className="text-xs text-muted sm:shrink-0">{project.year}</span>
-                    </div>
-                    <p className="mt-3 text-base text-muted">{project.summary}</p>
-                    <ul className="mt-4 space-y-2">
-                      {project.highlights.map((item) => (
-                        <li key={item} className="flex gap-2 text-sm leading-6 text-muted">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    {project.liveUrl ? (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline"
-                      >
-                        Visit Website
-                      </a>
-                    ) : null}
-                  </article>
-                ))}
-              </div>
-            </article>
+              </article>
+            </div>
 
             <div className="space-y-6">
-              <article id="contact" className="rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+              <article className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="rounded-lg bg-emerald-500/15 px-2 py-1 text-emerald-300">&lt;/&gt;</span>
+                  <h2 className="font-display text-2xl font-semibold text-white">Core Stack</h2>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Backend</p>
+                    <div className="flex flex-wrap gap-2">
+                      {coreStack.backend.map((item) => (
+                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Frontend</p>
+                    <div className="flex flex-wrap gap-2">
+                      {coreStack.frontend.map((item) => (
+                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Data & Infra</p>
+                    <div className="flex flex-wrap gap-2">
+                      {coreStack.dataInfra.map((item) => (
+                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted">Integrations</p>
+                    <div className="flex flex-wrap gap-2">
+                      {coreStack.integrations.map((item) => (
+                        <span key={item} className="rounded-lg border border-border bg-surface/80 px-3 py-1 text-sm text-text">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article id="contact" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
                 <div className="mb-5 flex items-center gap-3">
                   <span className="rounded-lg bg-cyan-500/15 px-2 py-1 text-cyan-300">@</span>
-                  <h2 className="font-display text-3xl font-semibold text-white">Contact</h2>
+                  <h2 className="font-display text-2xl font-semibold text-white">Contact</h2>
                 </div>
-                <ul className="space-y-3 text-base text-muted">
+                <ul className="space-y-4 text-sm text-muted">
                   <li>
-                    <a className="hover:text-white" href="mailto:chavezlovelym@gmail.com">
-                      chavezlovelym@gmail.com
+                    <a className="flex items-center gap-3 hover:text-white" href="mailto:chavezlovelym@gmail.com">
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                        <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+                        <path d="M4 7l8 6 8-6" />
+                      </svg>
+                      <span>chavezlovelym@gmail.com</span>
                     </a>
                   </li>
-                  {/* <li>
-                    <a className="hover:text-white" href="https://github.com/lovelymaechavez" target="_blank" rel="noreferrer">
-                      github.com/lovelymaechavez
-                    </a>
-                  </li> */}
                   <li>
-                    <a className="hover:text-white" href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer">
-                      linkedin.com/in/lovely-mae-chavez-046a342b0
+                    <a
+                      className="flex items-center gap-3 hover:text-white"
+                      href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+                        <path d="M8.5 10.5v6M8.5 8.5v.01M12 16.5v-3.4c0-1.4.9-2.6 2.4-2.6 1.2 0 2.1.9 2.1 2.4v3.6" />
+                      </svg>
+                      <span>linkedin.com/in/lovely-mae-chavez-046a342b0</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="flex items-center gap-3 hover:text-white"
+                      href="https://github.com/MsLovely-dev"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                        <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-1.9c-3.1.67-3.75-1.32-3.75-1.32-.5-1.3-1.25-1.64-1.25-1.64-1.03-.7.08-.7.08-.7 1.13.08 1.73 1.18 1.73 1.18 1.01 1.74 2.64 1.24 3.28.95.1-.74.4-1.24.72-1.52-2.47-.29-5.07-1.24-5.07-5.5 0-1.22.43-2.22 1.15-3-.12-.28-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.16a10.6 10.6 0 0 1 5.6 0c2.15-1.46 3.08-1.16 3.08-1.16.61 1.55.23 2.7.11 2.98.72.78 1.15 1.78 1.15 3 0 4.27-2.6 5.21-5.08 5.5.41.36.77 1.05.77 2.13v3.16c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" />
+                      </svg>
+                      <span>github.com/MsLovely-dev</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="flex items-center gap-3 hover:text-white"
+                      href="https://x.com/chavezlovelym"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                      <span>x.com/chavezlovelym</span>
                     </a>
                   </li>
                 </ul>
+                <div className="mt-6 flex items-center gap-3 border-t border-border/70 pt-5">
+                  <a
+                    href="https://github.com/MsLovely-dev"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    aria-label="GitHub"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                      <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-1.9c-3.1.67-3.75-1.32-3.75-1.32-.5-1.3-1.25-1.64-1.25-1.64-1.03-.7.08-.7.08-.7 1.13.08 1.73 1.18 1.73 1.18 1.01 1.74 2.64 1.24 3.28.95.1-.74.4-1.24.72-1.52-2.47-.29-5.07-1.24-5.07-5.5 0-1.22.43-2.22 1.15-3-.12-.28-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.16a10.6 10.6 0 0 1 5.6 0c2.15-1.46 3.08-1.16 3.08-1.16.61 1.55.23 2.7.11 2.98.72.78 1.15 1.78 1.15 3 0 4.27-2.6 5.21-5.08 5.5.41.36.77 1.05.77 2.13v3.16c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/lovely-mae-chavez-046a342b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    aria-label="LinkedIn"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                      <path d="M5.2 3.5A1.7 1.7 0 1 0 5.2 7a1.7 1.7 0 0 0 0-3.5ZM3.9 8.5h2.6v11.6H3.9V8.5Zm6.4 0h2.5v1.6h.04c.35-.67 1.2-1.38 2.48-1.38 2.65 0 3.14 1.74 3.14 4v7.37h-2.6v-6.53c0-1.56-.03-3.57-2.17-3.57-2.18 0-2.52 1.7-2.52 3.46v6.64h-2.6V8.5Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://x.com/chavezlovelym"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg border border-border bg-surface/70 p-2.5 text-muted transition-colors hover:text-white"
+                    aria-label="X (Twitter)"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </a>
+                </div>
               </article>
             </div>
           </div>
