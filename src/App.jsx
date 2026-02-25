@@ -54,19 +54,31 @@ function App() {
             <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
             Available for hire
           </div>
-          <button
-            type="button"
-            onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
-            className="theme-toggle rounded-lg border border-border bg-card/80 px-3 py-2 text-xs font-semibold text-muted transition-colors hover:text-white"
-            aria-label="Toggle light mode"
-          >
-            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-          </button>
-          <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
-            <a href="#profile" className="hover:text-white">Profile</a>
-            <a href="#work" className="hover:text-white">Work</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-          </nav>
+          <div className="flex items-center gap-4 sm:gap-5">
+            <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
+              <a href="#profile" className="hover:text-white">Profile</a>
+              <a href="#work" className="hover:text-white">Work</a>
+              <a href="#contact" className="hover:text-white">Contact</a>
+            </nav>
+            <button
+              type="button"
+              onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+              className="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card/80 text-muted transition-colors hover:text-white"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            >
+              {theme === 'dark' ? (
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3.6" />
+                  <path d="M12 2.8v2.3M12 18.9v2.3M21.2 12h-2.3M5.1 12H2.8M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+                  <path d="M20.4 14.8A8.8 8.8 0 1 1 9.2 3.6a7.2 7.2 0 0 0 11.2 11.2Z" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </header>
 
