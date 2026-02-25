@@ -150,6 +150,7 @@ function App() {
                   My core role is Backend Developer, and I have grown into a Software Engineer I position.
                   I build reliable systems, implement business logic, and support workflow automation,
                   while also contributing to frontend development when end-to-end delivery is required.
+                  I also do AI development, including chatbot solutions.
                 </p>
 
                 <p className="max-w-4xl text-base leading-8 text-muted">

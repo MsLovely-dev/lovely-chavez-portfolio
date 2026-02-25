@@ -48,4 +48,13 @@ export const projects = [
       'Stack: React, Vite, Tailwind CSS',
     ],
   },
+  {
+    title: 'DIGIBOT - Chatbot (Private)',
+    image: '/images/projects/booking-placeholder.svg',
+    year: 2024,
+    points: [
+      'Chatbot assistant built to provide fast, context-aware responses for common user questions and support workflows.',
+      'Stack: Python, Azure OpenAI',
+    ],
+  },
 ]
