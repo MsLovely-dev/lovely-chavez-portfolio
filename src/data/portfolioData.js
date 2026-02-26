@@ -21,7 +21,7 @@ export const skillGroups = [
 
 export const projects = [
   {
-    title: 'CHRONOS - Time & Attendance System (Private)',
+    title: 'CHRONOS - Time Tracking System (Private)',
     image: '/images/projects/chronos-placeholder.svg',
     year: 2025,
     points: [

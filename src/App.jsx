@@ -288,7 +288,7 @@ function App() {
                         <path d="M17.657 16.657 13.414 20.9a2 2 0 0 1-2.828 0L6.343 16.657a8 8 0 1 1 11.314 0Z" />
                         <circle cx="12" cy="11" r="2.5" />
                       </svg>
-                      <span>Binangona Rizal</span>
+                      <span>Binangonan Rizal</span>
                     </div>
                   </li>
                 </ul>
