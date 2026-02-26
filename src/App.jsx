@@ -58,6 +58,7 @@ function App() {
             <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
               <a href="#profile" className="hover:text-white">Profile</a>
               <a href="#work" className="hover:text-white">Work</a>
+              <a href="#certifications" className="hover:text-white">Certifications</a>
               <a href="#contact" className="hover:text-white">Contact</a>
             </nav>
             <button
@@ -265,6 +266,35 @@ function App() {
                     </div>
                   </div>
                 </div>
+              </article>
+
+              <article id="certifications" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="rounded-lg bg-amber-500/15 px-2 py-1 text-amber-300">#</span>
+                  <h2 className="font-display text-2xl font-semibold text-zinc-300">Certifications</h2>
+                </div>
+                <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="rounded-lg border border-zinc-700 bg-zinc-800/70 px-3 py-2">
+                    <a
+                      href={`${import.meta.env.BASE_URL}images/certificates/certifiedpl400.png`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-zinc-100 hover:underline"
+                    >
+                      Microsoft Certified: Power Platform Developer Associate
+                    </a>
+                  </li>
+                  <li className="rounded-lg border border-zinc-700 bg-zinc-800/70 px-3 py-2">
+                    <a
+                      href={`${import.meta.env.BASE_URL}images/certificates/awscertificate.png`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-zinc-100 hover:underline"
+                    >
+                      AWS Academy Graduate - Cloud Foundations - Training Badge
+                    </a>
+                  </li>
+                </ul>
               </article>
 
               <article id="contact" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
