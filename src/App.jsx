@@ -157,7 +157,7 @@ function App() {
                 <p className="max-w-4xl text-base leading-8 text-muted">
                   I focus on translating complex processes into stable, maintainable software with clear
                   structure and production-ready standards. I also handle deployments and practice rapid
-                  prototyping (“vibe coding”) to efficiently explore and validate ideas.
+                  prototyping to efficiently explore and validate ideas.
                 </p>
               </article>
 
