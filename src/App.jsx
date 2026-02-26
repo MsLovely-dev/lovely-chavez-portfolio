@@ -274,7 +274,7 @@ function App() {
                   <h2 className="font-display text-2xl font-semibold text-zinc-300">Certifications</h2>
                 </div>
                 <ul className="space-y-3 text-sm text-zinc-400">
-                  <li className="rounded-lg border border-zinc-700 bg-zinc-800/70 px-3 py-2">
+                  <li className="rounded-lg border border-border/80 bg-surface/80 px-3 py-2">
                     <a
                       href={`${import.meta.env.BASE_URL}images/certificates/certifiedpl400.png`}
                       target="_blank"
@@ -284,7 +284,7 @@ function App() {
                       Microsoft Certified: Power Platform Developer Associate
                     </a>
                   </li>
-                  <li className="rounded-lg border border-zinc-700 bg-zinc-800/70 px-3 py-2">
+                  <li className="rounded-lg border border-border/80 bg-surface/80 px-3 py-2">
                     <a
                       href={`${import.meta.env.BASE_URL}images/certificates/awscertificate.png`}
                       target="_blank"
