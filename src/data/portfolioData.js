@@ -1,10 +1,16 @@
 export const projects = [
   {
-    title: 'CHRONOS - Time Tracking System (Private)',
+    title: 'CHRONOS - Time Tracking & Payroll System',
     year: 2025,
     points: [
-      'Internal project and workforce management system with task tracking, timesheet workflows, approval processes, and compliance-based payroll computation with realtime notifications.',
-      'Stack: Django, Django REST Framework, Channels, React, TypeScript, Vite, Tailwind CSS, WebSocket notifications.',
+      'Built an enterprise workforce system with timesheet workflows, approvals, and a rule-based payroll engine (OT, holidays, rest day, night differential). Developed REST APIs and real-time notifications using Django Channels, integrated with Microsoft Teams, and deployed on Azure with comprehensive testing for reliability.',
+      'Rule-based payroll logic including overtime, holidays, rest day, and night differential calculations.',
+      'Real-time notifications using WebSockets (Django Channels).',
+      'REST APIs for workflow and payroll modules.',
+      'Microsoft Teams integration through a custom Teams application for internal workforce access.',
+      'Backend deployment and maintenance on Azure (App Service, VM, SSL configuration).',
+      'Unit, integration, and functional testing to ensure reliability.',
+      'Stack: Django, Django REST Framework, Django Channels, React, TypeScript, Vite, Tailwind CSS, Azure, Microsoft Teams.',
     ],
   },
   {

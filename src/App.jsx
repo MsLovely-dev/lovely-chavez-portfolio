@@ -3,12 +3,54 @@ import { projects } from './data/portfolioData'
 
 const sectionClassName = 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10'
 
-const coreStack = {
-  backend: ['Django', 'Django REST Framework', 'Django Channels', 'Daphne (ASGI)'],
-  frontend: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Django Templates', 'JavaScript', 'CSS'],
-  dataInfra: ['SQLite', 'PostgreSQL', 'WebSocket (ws/notifications/)', 'Azure VM', 'Azure App Service'],
-  integrations: ['Microsoft Graph API', 'Azure AD', 'SharePoint'],
-}
+const coreStackSections = [
+  {
+    label: 'Languages',
+    items: ['Python', 'JavaScript', 'TypeScript', 'C#', 'HTML', 'CSS'],
+  },
+  {
+    label: 'Frameworks',
+    items: ['Django', 'Django REST Framework', 'Django Channels', 'React', 'Vite', 'Tailwind CSS'],
+  },
+  {
+    label: 'APIs & Integrations',
+    items: ['REST APIs', 'WebSockets', 'Microsoft Graph API', 'SharePoint', 'Azure AD', 'Microsoft Teams App Development & Deployment'],
+  },
+  {
+    label: 'Databases',
+    items: ['PostgreSQL', 'MySQL', 'SQLite'],
+  },
+  {
+    label: 'Cloud & DevOps',
+    items: ['Azure App Service', 'Azure VM', 'Git', 'SSL Configuration'],
+  },
+  {
+    label: 'Testing',
+    items: ['Unit Testing', 'Integration Testing', 'Functional Testing'],
+  },
+  {
+    label: 'Concepts',
+    items: ['Agile Development', 'System Design', 'RBAC', 'Workflow Automation'],
+  },
+]
+
+const experience = [
+  {
+    period: 'NOV 2025 - PRESENT',
+    role: 'Software Engineer I',
+    company: 'Microgenesis Business Systems',
+  },
+  {
+    period: 'AUG 2024 - NOV 2025',
+    role: 'Backend Developer',
+    company: 'Microgenesis Business Systems',
+  },
+  {
+    period: 'JUN 2023 - AUG 2023',
+    role: 'Internship - Software Developer',
+    company: 'Sorosoro Ibaba Development Cooperative',
+  },
+]
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -57,6 +99,7 @@ function App() {
           <div className="flex items-center gap-4 sm:gap-5">
             <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
               <a href="#profile" className="hover:text-white">Profile</a>
+              <a href="#experience" className="hover:text-white">Experience</a>
               <a href="#work" className="hover:text-white">Work</a>
               <a href="#certifications" className="hover:text-white">Certifications</a>
               <a href="#contact" className="hover:text-white">Contact</a>
@@ -88,7 +131,7 @@ function App() {
           <div className="card-hover rounded-3xl border border-border/80 bg-card/85 p-8 shadow-panel sm:p-10">
             <div>
               <p className="font-mono text-sm text-muted">
-                Backend Developer to Software Engineer I
+                Full-Stack Developer
               </p>
               <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
                 Lovely Mae{' '}
@@ -225,45 +268,51 @@ function App() {
                   <h2 className="font-display text-2xl font-semibold text-zinc-300">Core Stack</h2>
                 </div>
                 <div className="space-y-5">
-                  <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Backend</p>
-                    <div className="flex flex-wrap gap-2">
-                      {coreStack.backend.map((item) => (
-                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
-                          {item}
-                        </span>
-                      ))}
+                  {coreStackSections.map((section) => (
+                    <div key={section.label}>
+                      <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">{section.label}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {section.items.map((item) => (
+                          <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Frontend</p>
-                    <div className="flex flex-wrap gap-2">
-                      {coreStack.frontend.map((item) => (
-                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Data & Infra</p>
-                    <div className="flex flex-wrap gap-2">
-                      {coreStack.dataInfra.map((item) => (
-                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="mb-2 text-xs uppercase tracking-[0.16em] text-zinc-500">Integrations</p>
-                    <div className="flex flex-wrap gap-2">
-                      {coreStack.integrations.map((item) => (
-                        <span key={item} className="stack-chip rounded-lg border border-zinc-700 bg-zinc-800/85 px-3 py-1 text-sm text-zinc-400">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                  ))}
+                </div>
+              </article>
+
+              <article id="experience" className="card-hover rounded-3xl border border-border/80 bg-card/90 p-8 shadow-panel">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="rounded-lg bg-blue-500/15 px-2 py-1 text-blue-300">/</span>
+                  <h2 className="font-display text-2xl font-semibold text-zinc-300">Experience</h2>
+                </div>
+
+                <div className="relative mt-2 pl-6 sm:pl-8">
+                  <div
+                    className="absolute left-[0.7rem] top-1 bottom-1 w-px bg-border/80 sm:left-[0.9rem]"
+                    aria-hidden="true"
+                  />
+
+                  <div className="space-y-8 sm:space-y-10">
+                    {experience.map((item) => (
+                      <article key={`${item.role}-${item.period}`} className="relative pl-8 sm:pl-10">
+                        <span
+                          className="absolute left-[0.2rem] top-1.5 h-3 w-3 rounded-full bg-blue-600 shadow-[0_0_0_4px_rgba(37,99,235,0.16)] sm:left-[0.4rem]"
+                          aria-hidden="true"
+                        />
+                        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-blue-500">
+                          {item.period}
+                        </p>
+                        <h3 className="mt-1 text-lg font-semibold leading-tight text-text sm:text-l">
+                          {item.role}
+                        </h3>
+                        <p className="mt-1 text-lg leading-7 text-muted sm:text-sm">
+                          {item.company}
+                        </p>
+                      </article>
+                    ))}
                   </div>
                 </div>
               </article>
