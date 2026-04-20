@@ -1,6 +1,6 @@
 export const projects = [
   {
-    title: 'CHRONOS - Time Tracking & Payroll System',
+    title: 'CHRONOS - Time Tracking & Payroll System (Private)',
     year: 2025,
     points: [
       'Built an enterprise workforce system with timesheet workflows, approvals, and a rule-based payroll engine (OT, holidays, rest day, night differential). Developed REST APIs and real-time notifications using Django Channels, integrated with Microsoft Teams, and deployed on Azure with comprehensive testing for reliability.',
