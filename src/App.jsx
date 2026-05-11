@@ -73,6 +73,9 @@ function App() {
       summary:
         project.points.find((point) => point.startsWith('Overview:'))?.replace('Overview:', '').trim() ||
         project.points[0],
+      details: project.points.filter(
+        (point) => !point.startsWith('Overview:') && !point.startsWith('Stack:')
+      ),
       stackTags:
         project.points
           .find((point) => point.startsWith('Stack:'))
@@ -151,7 +154,7 @@ function App() {
                   View Projects
                 </a>
                 <a
-                  href={encodeURI(`${import.meta.env.BASE_URL}files/LOVELY MAE CHAVEZ_CV.pdf`)}
+                  href={encodeURI(`${import.meta.env.BASE_URL}files/LOVELY MAE CHAVEZ_CV1.pdf`)}
                   download
                   className="rounded-lg border border-border bg-surface/80 px-6 py-3 text-sm font-semibold text-text hover:border-accent/60 hover:text-white"
                 >
@@ -235,6 +238,16 @@ function App() {
                         </span>
                       </div>
                       <p className="mt-3 text-sm leading-7 text-muted">{project.summary}</p>
+                      {project.details.length > 0 ? (
+                        <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
+                          {project.details.map((detail) => (
+                            <li key={detail} className="flex gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" aria-hidden="true" />
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                       <div className="mt-4 flex flex-wrap gap-2">
                         {project.stackTags.map((tag) => (
                           <span
