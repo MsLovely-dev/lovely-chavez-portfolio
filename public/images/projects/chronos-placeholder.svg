@@ -7,7 +7,7 @@
   <rect x="130" y="384" width="940" height="74" rx="12" fill="#0B1220" stroke="#1F2A44"/>
   <rect x="130" y="476" width="470" height="104" rx="12" fill="#0B1220" stroke="#1F2A44"/>
   <rect x="616" y="476" width="454" height="104" rx="12" fill="#0B1220" stroke="#1F2A44"/>
-  <text x="130" y="115" fill="#E5E7EB" font-size="30" font-family="Arial, sans-serif" font-weight="700">CHRONOS Dashboard</text>
+  <text x="130" y="115" fill="#E5E7EB" font-size="30" font-family="Arial, sans-serif" font-weight="700">Workforce &amp; Payroll Dashboard</text>
   <text x="148" y="248" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Approved Timesheet Hours</text>
   <text x="148" y="340" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">Overtime Computation (Rule Engine)</text>
   <text x="148" y="432" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">DOLE-compliant Pay Breakdown</text>

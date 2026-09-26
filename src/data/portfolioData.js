@@ -1,6 +1,6 @@
 export const projects = [
   {
-    title: 'CHRONOS - Time Tracking & Payroll System (Private)',
+    title: 'Workforce Timekeeping & Payroll Management System (Private)',
     year: 2025,
     points: [
       'Overview: Built an enterprise workforce system with task tracking, timesheet workflows, approval processes, and a payroll computation engine.',
@@ -14,7 +14,7 @@ export const projects = [
     ],
   },
   {
-    title: 'RDMS - Research Document Management System (Private)',
+    title: 'Research Document Workflow & Repository System (Private)',
     year: 2024,
     points: [
       'Overview: Developed a document lifecycle system with role-based access control for research document management.',
@@ -40,7 +40,7 @@ export const projects = [
     ],
   },
   {
-    title: 'DIGIBOT - Chatbot (Private)',
+    title: 'AI-Powered Support Assistant (Private)',
     year: 2024,
     points: [
       'Overview: Built an AI chatbot system using Python and Azure OpenAI for automated user support.',
