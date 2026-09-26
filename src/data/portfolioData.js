@@ -1,5 +1,21 @@
 export const projects = [
   {
+    title: 'College Entrance Examination & Admissions Platform (Private)',
+    year: '2025–2026',
+    sortYear: 2026,
+    points: [
+      'Overview: Developed an enterprise platform for managing student registration, admissions, and examination workflows.',
+      'Built registration, personal data verification, selfie capture, application review, and student bulk-upload workflows.',
+      'Implemented role-based access control, audit logging, and school-scoped reviewer workflows.',
+      'Developed REST APIs with Django REST Framework and integrated them with a React and TypeScript frontend.',
+      'Implemented secure student media storage using Azure Blob Storage.',
+      'Used Azure Cache for Redis for queueing and asynchronous workload processing.',
+      'Maintained Azure App Service deployments and CI/CD pipelines through Azure DevOps.',
+      'Performed testing, bug fixes, staging deployments, and continuous feature enhancements.',
+      'Stack: Django, Django REST Framework, React, TypeScript, Vite, PostgreSQL, Azure App Service, Azure Blob Storage, Azure Cache for Redis, Azure DevOps',
+    ],
+  },
+  {
     title: 'Workforce Timekeeping & Payroll Management System (Private)',
     year: 2025,
     points: [

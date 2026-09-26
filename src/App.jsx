@@ -84,9 +84,10 @@ function App() {
           .map((item) => item.trim())
           .filter(Boolean) || [],
       year: project.year ?? 2026 - index,
+      sortYear: project.sortYear ?? project.year ?? 2026 - index,
       liveUrl: project.liveUrl,
     }))
-    .sort((a, b) => b.year - a.year)
+    .sort((a, b) => b.sortYear - a.sortYear)
 
   return (
     <>
