@@ -68,7 +68,7 @@ function App() {
   }, [theme])
 
   const featuredProjects = projects
-    .map((project, index) => ({
+    .map((project) => ({
       title: project.title,
       summary:
         project.points.find((point) => point.startsWith('Overview:'))?.replace('Overview:', '').trim() ||
@@ -84,10 +84,8 @@ function App() {
           .map((item) => item.trim())
           .filter(Boolean) || [],
       year: project.year ?? 2026 - index,
-      sortYear: project.sortYear ?? project.year ?? 2026 - index,
       liveUrl: project.liveUrl,
     }))
-    .sort((a, b) => b.sortYear - a.sortYear)
 
   return (
     <>
@@ -135,7 +133,7 @@ function App() {
           <div className="card-hover rounded-3xl border border-border/80 bg-card/85 p-8 shadow-panel sm:p-10">
             <div>
               <p className="font-mono text-sm text-muted">
-                Full-Stack Developer
+                Software Engineer I
               </p>
               <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
                 Lovely Mae{' '}
@@ -144,8 +142,8 @@ function App() {
                 </span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-                Backend-focused engineer building business systems, time computation logic, and
-                workflow automation, while delivering full-stack implementation when needed.
+                Software engineer building secure, scalable business applications, APIs, and 
+                automated workflows across backend, frontend, and cloud environments.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
                 <a
@@ -170,12 +168,12 @@ function App() {
                 <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Years Experience</p>
               </div>
               <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
-                <p className="text-4xl font-bold text-white">4+</p>
+                <p className="text-4xl font-bold text-white">5+</p>
                 <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Systems Delivered</p>
               </div>
               <div className="card-hover rounded-2xl border border-border/80 bg-surface/70 p-5">
-                <p className="text-4xl font-bold text-white">10+</p>
-                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Workflow Engines</p>
+                <p className="text-4xl font-bold text-white">15+</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.16em] text-muted">Workflows Automated</p>
               </div>
             </div>
           </div>

@@ -2,7 +2,6 @@ export const projects = [
   {
     title: 'College Entrance Examination & Admissions Platform (Private)',
     year: '2025–2026',
-    sortYear: 2026,
     points: [
       'Overview: Developed an enterprise platform for managing student registration, admissions, and examination workflows.',
       'Built registration, personal data verification, selfie capture, application review, and student bulk-upload workflows.',
@@ -43,19 +42,6 @@ export const projects = [
     ],
   },
   {
-    title: 'Doce-Amor Wellness Spa',
-    liveUrl: 'https://doceamorwellnessspa.netlify.app/',
-    year: 2026,
-    points: [
-      'Overview: Developed a responsive frontend for a public-facing wellness spa website.',
-      'Focused on clean UX/UI and mobile-first design.',
-      'Built reusable React sections for services, spa information, contact details, and customer-facing content.',
-      'Optimized layout behavior across mobile, tablet, and desktop screen sizes.',
-      'Used Tailwind CSS to keep styling consistent, maintainable, and easy to adjust.',
-      'Stack: React, Vite, Tailwind CSS',
-    ],
-  },
-  {
     title: 'AI-Powered Support Assistant (Private)',
     year: 2024,
     points: [
@@ -78,6 +64,19 @@ export const projects = [
       'Designed a reward points system to encourage users to contribute valid Batangueno words.',
       'Added feedback, analytics, pending contribution tracking, and admin review workflows.',
       'Stack: Django, Python, OpenAI API, NLP, HTML, CSS, JavaScript',
+    ],
+  },
+  {
+    title: 'Doce-Amor Wellness Spa',
+    liveUrl: 'https://doceamorwellnessspa.netlify.app/',
+    year: 2026,
+    points: [
+      'Overview: Developed a responsive frontend for a public-facing wellness spa website.',
+      'Focused on clean UX/UI and mobile-first design.',
+      'Built reusable React sections for services, spa information, contact details, and customer-facing content.',
+      'Optimized layout behavior across mobile, tablet, and desktop screen sizes.',
+      'Used Tailwind CSS to keep styling consistent, maintainable, and easy to adjust.',
+      'Stack: React, Vite, Tailwind CSS',
     ],
   },
   {
