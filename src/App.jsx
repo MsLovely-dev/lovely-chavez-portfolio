@@ -56,6 +56,8 @@ const experience = [
 ]
 
 function PortfolioPage({ theme, setTheme, onOpenProject }) {
+  const reduceMotion = useReducedMotion()
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -104,36 +106,59 @@ function PortfolioPage({ theme, setTheme, onOpenProject }) {
       <main>
         <section id="home" className={`${sectionClassName} py-14`}>
           <div className="card-hover rounded-3xl border border-border/80 bg-card/85 p-8 shadow-panel sm:p-10">
-            <div>
-              <p className="font-mono text-sm text-muted">
-                Software Engineer I
-              </p>
-              <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
-                Lovely Mae{' '}
-                <span className="bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
-                  Chavez
-                </span>
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-                Software engineer building secure, scalable business applications, APIs, and 
-                automated workflows across backend, frontend, and cloud environments.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-4">
-                <button
-                  type="button"
-                  onClick={() => scrollToSection('work')}
-                  className="interactive-control rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white"
-                >
-                  View Projects
-                </button>
-                <a
-                  href={encodeURI(`${import.meta.env.BASE_URL}files/CHAVEZ LOVELY MAE-RESUME.pdf`)}
-                  download
-                  className="rounded-lg border border-border bg-surface/80 px-6 py-3 text-sm font-semibold text-text hover:border-accent/60 hover:text-white"
-                >
-                  Download Resume
-                </a>
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(300px,0.75fr)]">
+              <div>
+                <p className="font-mono text-sm text-muted">
+                  Software Engineer I
+                </p>
+                <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl">
+                  Building secure systems &amp;{' '}
+                  <span className="bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
+                    smarter workflows.
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+                  I design and deliver scalable business applications, APIs, and automated workflows
+                  across backend, frontend, and cloud environments.
+                </p>
+                <div className="mt-9 flex flex-wrap gap-4">
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('work')}
+                    className="interactive-control rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white"
+                  >
+                    View Projects
+                  </button>
+                  <a
+                    href={encodeURI(`${import.meta.env.BASE_URL}files/CHAVEZ LOVELY MAE-RESUME.pdf`)}
+                    download
+                    className="rounded-lg border border-border bg-surface/80 px-6 py-3 text-sm font-semibold text-text hover:border-accent/60 hover:text-white"
+                  >
+                    Download Resume
+                  </a>
+                </div>
               </div>
+
+              <motion.figure
+                className="profile-portrait group relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-border/90 bg-surface shadow-[0_24px_70px_rgba(5,5,8,0.55)] lg:mx-0 lg:justify-self-end"
+                initial={reduceMotion ? false : { opacity: 0, x: 24, scale: 0.97 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: reduceMotion ? 0.08 : 0.55, delay: reduceMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={reduceMotion ? undefined : { y: -4, scale: 1.01 }}
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}images/profile-picture.jpeg`}
+                  alt="Lovely Mae Chavez"
+                  className="h-full w-full object-cover object-[57%_center] transition-transform duration-500 group-hover:scale-[1.025]"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" aria-hidden="true" />
+                <figcaption className="portrait-caption absolute inset-x-4 bottom-4 rounded-xl border border-white/15 bg-slate-950/75 px-4 py-3 backdrop-blur-md">
+                  <p className="text-sm font-semibold">Lovely Mae Chavez</p>
+                  <p className="portrait-caption-muted mt-1 font-mono text-xs">Software Engineer I · Backend Developer</p>
+                </figcaption>
+              </motion.figure>
             </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -167,16 +192,17 @@ function PortfolioPage({ theme, setTheme, onOpenProject }) {
                   <h2 className="font-display text-2xl font-semibold text-white">About</h2>
                 </div>
                 <p className="max-w-4xl text-base leading-8 text-muted mb-5">
-                  My core role is Backend Developer, and I have grown into a Software Engineer I position.
-                  I build reliable systems, implement business logic, and support workflow automation,
-                  while also contributing to frontend development when end-to-end delivery is required.
-                  I also do AI development, including chatbot solutions.
+                  I&apos;m a backend-focused Software Engineer I who builds secure, reliable business
+                  applications and workflow automation. I specialize in translating complex operational
+                  requirements into maintainable APIs, business logic, and data-driven systems, while
+                  contributing to frontend development when end-to-end delivery requires it.
                 </p>
 
                 <p className="max-w-4xl text-base leading-8 text-muted">
-                  I focus on translating complex processes into stable, maintainable software with clear
-                  structure and production-ready standards. I also handle deployments and practice rapid
-                  prototyping to efficiently explore and validate ideas.
+                  My experience spans full-stack development, cloud deployments, third-party integrations,
+                  and AI-powered solutions, including chatbots. I value clear architecture, production-ready
+                  engineering, and rapid prototyping to validate ideas early and turn them into practical,
+                  scalable software.
                 </p>
               </article>
 

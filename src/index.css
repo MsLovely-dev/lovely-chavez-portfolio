@@ -110,6 +110,28 @@
   .project-orb-rose { background: #f43f5e; }
   .project-orb-emerald { background: #10b981; }
 
+  .profile-portrait {
+    isolation: isolate;
+  }
+
+  .profile-portrait::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.12);
+    pointer-events: none;
+  }
+
+  .portrait-caption {
+    color: #ffffff;
+  }
+
+  .portrait-caption-muted {
+    color: #cbd5e1;
+  }
+
 }
 
 @layer base {
