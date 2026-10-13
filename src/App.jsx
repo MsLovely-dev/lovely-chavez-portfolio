@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { projects } from './data/portfolioData'
+import ProjectCard from './components/ProjectCard'
+import ProjectDetailPage from './components/ProjectDetailPage'
 
 const sectionClassName = 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10'
 
@@ -52,59 +55,29 @@ const experience = [
   },
 ]
 
-function App() {
-  const [theme, setTheme] = useState('dark')
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme')
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      setTheme(savedTheme)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('theme-light', theme === 'light')
-    localStorage.setItem('portfolio-theme', theme)
-  }, [theme])
-
-  const featuredProjects = projects
-    .map((project) => ({
-      title: project.title,
-      summary:
-        project.points.find((point) => point.startsWith('Overview:'))?.replace('Overview:', '').trim() ||
-        project.points[0],
-      details: project.points.filter(
-        (point) => !point.startsWith('Overview:') && !point.startsWith('Stack:')
-      ),
-      stackTags:
-        project.points
-          .find((point) => point.startsWith('Stack:'))
-          ?.replace('Stack:', '')
-          .split(',')
-          .map((item) => item.trim())
-          .filter(Boolean) || [],
-      year: project.year ?? 2026 - index,
-      liveUrl: project.liveUrl,
-    }))
+function PortfolioPage({ theme, setTheme, onOpenProject }) {
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-surface/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-10">
-          <a href="#home" className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-accent">
+          <button type="button" onClick={() => scrollToSection('home')} className="interactive-link font-display text-sm font-semibold uppercase tracking-[0.16em] text-accent">
             Lovely Mae Chavez
-          </a>
+          </button>
           <div className="hidden items-center gap-2 rounded-full border border-border/80 bg-card/70 px-4 py-2 text-xs text-muted md:flex">
             <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
             Available for hire
           </div>
           <div className="flex items-center gap-4 sm:gap-5">
             <nav aria-label="Primary" className="hidden gap-6 text-sm text-muted sm:flex">
-              <a href="#profile" className="hover:text-white">Profile</a>
-              <a href="#experience" className="hover:text-white">Experience</a>
-              <a href="#work" className="hover:text-white">Work</a>
-              <a href="#certifications" className="hover:text-white">Certifications</a>
-              <a href="#contact" className="hover:text-white">Contact</a>
+              <button type="button" onClick={() => scrollToSection('profile')} className="interactive-link hover:text-white">Profile</button>
+              <button type="button" onClick={() => scrollToSection('experience')} className="interactive-link hover:text-white">Experience</button>
+              <button type="button" onClick={() => scrollToSection('work')} className="interactive-link hover:text-white">Work</button>
+              <button type="button" onClick={() => scrollToSection('certifications')} className="interactive-link hover:text-white">Certifications</button>
+              <button type="button" onClick={() => scrollToSection('contact')} className="interactive-link hover:text-white">Contact</button>
             </nav>
             <button
               type="button"
@@ -146,12 +119,13 @@ function App() {
                 automated workflows across backend, frontend, and cloud environments.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
-                <a
-                  href="#work"
-                  className="rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('work')}
+                  className="interactive-control rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white"
                 >
                   View Projects
-                </a>
+                </button>
                 <a
                   href={encodeURI(`${import.meta.env.BASE_URL}files/CHAVEZ LOVELY MAE-RESUME.pdf`)}
                   download
@@ -216,58 +190,9 @@ function App() {
                   </span>
                   <h2 className="font-display text-xl font-semibold text-white">Featured Work</h2>
                 </div>
-                <div className="space-y-4">
-                  {featuredProjects.map((project, itemIndex) => (
-                    <article
-                      key={project.title}
-                      className={`featured-item group rounded-2xl border bg-surface/70 p-4 sm:p-5 ${
-                        itemIndex === 0 ? 'border-accent/60' : 'border-border/80'
-                      }`}
-                    >
-                      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                        <h3
-                          className={`featured-title text-1xl font-semibold leading-tight transition-colors duration-300 ${
-                            itemIndex === 0 ? 'text-indigo-400' : 'text-white'
-                          }`}
-                        >
-                          {project.title}
-                        </h3>
-                        <span className="featured-year text-xs text-muted transition-colors duration-300 sm:shrink-0">
-                          {project.year}
-                        </span>
-                      </div>
-                      <p className="mt-3 text-sm leading-7 text-muted">{project.summary}</p>
-                      {project.details.length > 0 ? (
-                        <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
-                          {project.details.map((detail) => (
-                            <li key={detail} className="flex gap-2">
-                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" aria-hidden="true" />
-                              <span>{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : null}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {project.stackTags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="project-tag rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs font-mono text-indigo-200"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      {project.liveUrl ? (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline"
-                        >
-                          Visit Website
-                        </a>
-                      ) : null}
-                    </article>
+                <div className="grid items-stretch gap-5 md:grid-cols-2">
+                  {projects.map((project) => (
+                    <ProjectCard key={project.slug} project={project} onOpen={onOpenProject} />
                   ))}
                 </div>
               </article>
@@ -430,6 +355,54 @@ function App() {
           <p>Backend Developer | Software Engineer I</p>
         </div>
       </footer>
+    </>
+  )
+}
+
+function PageFrame({ children }) {
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <motion.div
+      initial={reduceMotion ? false : { opacity: 0, y: 10, scale: 0.998 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.998 }}
+      transition={{ duration: reduceMotion ? 0.12 : 0.36, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function App() {
+  const [selectedProjectSlug, setSelectedProjectSlug] = useState(null)
+  const closeProject = useCallback(() => setSelectedProjectSlug(null), [])
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('portfolio-theme')
+    return savedTheme === 'light' ? 'light' : 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-light', theme === 'light')
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
+  return (
+    <>
+      <div aria-hidden={selectedProjectSlug ? 'true' : undefined}>
+        <PageFrame>
+          <PortfolioPage theme={theme} setTheme={setTheme} onOpenProject={setSelectedProjectSlug} />
+        </PageFrame>
+      </div>
+      <AnimatePresence initial={false}>
+        {selectedProjectSlug ? (
+          <ProjectDetailPage
+            key={selectedProjectSlug}
+            slug={selectedProjectSlug}
+            onDismiss={closeProject}
+          />
+        ) : null}
+      </AnimatePresence>
     </>
   )
 }

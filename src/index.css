@@ -47,6 +47,69 @@
   .featured-item:hover .featured-year {
     color: #818cf8;
   }
+
+  .interactive-link,
+  .interactive-control,
+  .project-link,
+  a,
+  button,
+  input,
+  textarea {
+    @apply transition-all duration-200;
+  }
+
+  .interactive-control:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(5, 5, 8, 0.28);
+  }
+
+  .interactive-control:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .interactive-link:hover,
+  .project-link:hover {
+    transform: translateX(2px);
+  }
+
+  .project-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .project-card > div:last-child {
+    transform: translateZ(12px);
+  }
+
+  .project-orb {
+    position: absolute;
+    right: -4rem;
+    top: -5rem;
+    width: 13rem;
+    height: 13rem;
+    border-radius: 9999px;
+    opacity: 0.22;
+    filter: blur(22px);
+    pointer-events: none;
+  }
+
+  .project-orb-large {
+    right: -7rem;
+    top: -9rem;
+    width: 27rem;
+    height: 27rem;
+    opacity: 0.26;
+    filter: blur(38px);
+  }
+
+  .project-orb-violet { background: #8b5cf6; }
+  .project-orb-blue { background: #3b82f6; }
+  .project-orb-cyan { background: #06b6d4; }
+  .project-orb-fuchsia { background: #d946ef; }
+  .project-orb-amber { background: #f59e0b; }
+  .project-orb-rose { background: #f43f5e; }
+  .project-orb-emerald { background: #10b981; }
+
 }
 
 @layer base {
@@ -73,6 +136,17 @@
 
   ::selection {
     background: rgba(99, 102, 241, 0.35);
+  }
+
+  :focus-visible {
+    outline: 2px solid #818cf8;
+    outline-offset: 3px;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.16);
   }
 
   html.theme-light body {
@@ -165,5 +239,28 @@
   html.theme-light .featured-item:hover {
     border-color: #a5b4fc !important;
     background-image: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+
+    .project-card,
+    .project-card > div:last-child,
+    .interactive-control:hover,
+    .interactive-link:hover,
+    .project-link:hover {
+      transform: none !important;
+    }
   }
 }

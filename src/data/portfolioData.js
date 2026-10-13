@@ -1,4 +1,14 @@
-export const projects = [
+const projectMetadata = {
+  'College Entrance Examination & Admissions Platform (Private)': { slug: 'admissions-platform', category: 'Enterprise platform', accent: 'violet' },
+  'Workforce Timekeeping & Payroll Management System (Private)': { slug: 'workforce-payroll-system', category: 'Workforce automation', accent: 'blue' },
+  'Research Document Workflow & Repository System (Private)': { slug: 'research-repository', category: 'Document workflows', accent: 'cyan' },
+  'AI-Powered Support Assistant (Private)': { slug: 'ai-support-assistant', category: 'Applied AI', accent: 'fuchsia' },
+  'ALAME - Batangueno Dialect Learning & Contribution Platform': { slug: 'alame-language-platform', category: 'Language technology', accent: 'amber' },
+  'Doce-Amor Wellness Spa': { slug: 'doce-amor-wellness-spa', category: 'Frontend experience', accent: 'rose' },
+  'Google Sheets API Integration & Automation System': { slug: 'sheets-automation-system', category: 'Business automation', accent: 'emerald' },
+}
+
+const rawProjects = [
   {
     title: 'College Entrance Examination & Admissions Platform (Private)',
     year: '2025–2026',
@@ -93,3 +103,21 @@ export const projects = [
     ],
   },
 ]
+
+export const projects = rawProjects.map((project) => {
+  const metadata = projectMetadata[project.title]
+  const overview = project.points.find((point) => point.startsWith('Overview:'))
+  const stack = project.points.find((point) => point.startsWith('Stack:'))
+
+  return {
+    ...project,
+    ...metadata,
+    summary: overview?.replace('Overview:', '').trim() || project.points[0],
+    details: project.points.filter(
+      (point) => !point.startsWith('Overview:') && !point.startsWith('Stack:'),
+    ),
+    technologies: stack
+      ? stack.replace('Stack:', '').split(',').map((item) => item.trim()).filter(Boolean)
+      : [],
+  }
+})
