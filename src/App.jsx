@@ -155,7 +155,7 @@ function App() {
                   View Projects
                 </a>
                 <a
-                  href={encodeURI(`${import.meta.env.BASE_URL}files/LOVELY MAE CHAVEZ_CV1.pdf`)}
+                  href={encodeURI(`${import.meta.env.BASE_URL}files/CHAVEZ LOVELY MAE-RESUME.pdf`)}
                   download
                   className="rounded-lg border border-border bg-surface/80 px-6 py-3 text-sm font-semibold text-text hover:border-accent/60 hover:text-white"
                 >
